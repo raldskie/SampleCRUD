@@ -1,0 +1,93 @@
+{{> nav}}
+
+<div class="container mt-3">
+    <p>Technologies Used: Node.js, Hapi.js</p>
+
+    <div class="row">
+
+        <div class="col-lg-4">
+
+            {{> messages}}
+
+            <form action="/add-note" method="post" class="form-group">
+                <input type="text" name="title" class="form-control" placeholder="Title">
+                <input type="text" name="note" class="form-control mt-2" placeholder="Note Content">
+                <button class="btn btn-primary d-block mt-2">Add Note</button>
+            </form>
+        </div>
+
+        <div class="col-lg-8">
+            <p class="font-weight-bold">NOTES LIST</p>
+
+            {{#each notesList}}
+
+            <div class="d-flex flex-row border align-items-center p-2 rounded mb-3">
+                <div class="w-100">
+                    <h3>{{this.title}}</h3>
+                    <p>{{this.note}}</p>
+                </div>
+                <button class="edit-button btn btn-primary mr-2" data-id="{{this._id}}" data-title="{{this.title}}"
+                    data-note="{{this.note}}" data-toggle="modal" data-target="#edit-modal">
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+
+                <button class="delete-button btn btn-danger" data-id="{{this._id}}" data-title="{{this.title}}"
+                    data-note="{{this.note}}" data-toggle="modal" data-target="#delete-modal"><i class="fa fa-trash-o"
+                        aria-hidden="true"></i></button>
+            </div>
+
+            {{/each}}
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modals Here -->
+
+<div class="modal" tabindex="-1" id="edit-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Note</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p class="user-id"></p>
+                <form id="edit-form" method="POST" class="form-group">
+                    <input type="text" id="title" name="title" class="form-control" placeholder="Title">
+                    <input type="text" id="note" name="note" class="form-control mt-2" placeholder="Note Content">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button class="btn btn-primary">Save changes</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="modal" tabindex="-1" id="delete-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete Note?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h1 class="note-title"></h1>
+                <p class="note-id"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <a id="confirm-delete"><button class="btn btn-danger">Delete User</button></a>
+            </div>
+
+        </div>
+    </div>
+</div>

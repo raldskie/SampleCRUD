@@ -1,0 +1,43 @@
+<div class="container">
+
+    <div class="row mt-5">
+
+        <div class="col-lg-3"></div>
+
+        <div class="col-lg-6 p-0">
+
+            {{> messages}}
+
+            <form class="form-group p-0 border" method="POST" action="/authenticate">
+                <p class="bg-light border-bottom px-3 py-2"><b>Log In</b></p>
+
+                <div class="form-group row px-3">
+                    <label class="col-sm-2 col-form-label">Username</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="username" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group row px-3">
+                    <label class="col-sm-2 col-form-label">Password</label>
+                    <div class="col-sm-10">
+                        <input type="password" name="password" class="form-control" id="inputPassword">
+
+                        <br>
+                        <button class="btn btn-primary">Log In</button>
+                    </div>
+                </div>
+
+            </form>
+
+            <a href="/sign-up">
+                <p class="text-danger text-center">Sign Up Here</p>
+            </a>
+
+        </div>
+
+        <div class="col-lg-3"></div>
+
+    </div>
+
+</div>
