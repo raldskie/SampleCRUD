@@ -16,7 +16,7 @@ exports.deployment = async () => {
 
     // Host and Port Config
     internals.server = new Hapi.Server({
-        host: Config.env.dev ? '0.0.0.0' : '127.0.0.1',
+        host: '127.0.0.1',
         port: 5000,
     });
 
